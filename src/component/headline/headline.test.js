@@ -1,9 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Headline from './index';
 
-import { findByDataAttr } from '../../../Utils';
-import { description } from 'commander';
+import Headline from './index';
+import { findByDataAttr, checkProps } from '../../../Utils';
 
 const setUp = (props = {}) => {
   const component = shallow(<Headline {...props} />);
@@ -23,6 +22,24 @@ describe('headline component', () => {
       };
       component = setUp(props);
     });
+
+    it('should not throw a warning', () => {
+      const expectedProps = {
+        header: "test header",
+        desc: 'test description',
+        tempArr: [{
+          fName: 'test fname',
+          lName: 'test lname',
+          age: 23,
+          email: 'test@email.com',
+          onlineStatus: false
+        }]
+      };
+
+      let propsError = checkProps(Headline, expectedProps);
+      expect(propsError).toBeUndefined();
+
+    })
 
     it('should render without error', () => {
       let wrapper = findByDataAttr(component, 'headlineComponent');
