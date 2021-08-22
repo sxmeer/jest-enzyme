@@ -9,6 +9,7 @@ export const findByDataAttr = (component, dataAttr) => {
 }
 
 export const checkProps = (component, expectedProps) => {
+  /* eslint-disable react/forbid-foreign-prop-types */
   const propsError = checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
   return propsError;
 }
