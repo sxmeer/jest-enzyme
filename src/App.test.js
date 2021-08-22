@@ -29,4 +29,17 @@ describe('App Component', () => {
 
   })
 
+  it('exampleMethod_updatesState Method should update state as expected', () => {
+    const classInstance = component.instance();
+    classInstance.exampleMethod_updatesState();
+    const newState = classInstance.state.hideBtn;
+    expect(newState).toBe(true);
+  });
+
+  it('exampleMethod_returnsValue method should return value as expected', () => {
+    const classInstance = component.instance();
+    const newValue = classInstance.exampleMethod_returnsValue(2);
+    expect(newValue).toBe(4);
+  })
+
 });
